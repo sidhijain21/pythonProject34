@@ -1,0 +1,126 @@
+<html>
+<head>
+<title>my_map4.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #e8bf6a;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #bababa;}
+.s3 { color: #a5c261;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+my_map4.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;    </span>
+    <span class="s0">&lt;meta </span><span class="s2">http-equiv</span><span class="s3">=&quot;content-type&quot; </span><span class="s2">content</span><span class="s3">=&quot;text/html; charset=UTF-8&quot; </span><span class="s0">/&gt;</span>
+    
+        <span class="s0">&lt;script&gt;</span>
+            <span class="s1">L_NO_TOUCH = false;</span>
+            <span class="s1">L_DISABLE_3D = false;</span>
+        <span class="s0">&lt;/script&gt;</span>
+    
+    <span class="s0">&lt;style&gt;</span><span class="s1">html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</span><span class="s0">&lt;/style&gt;</span>
+    <span class="s0">&lt;style&gt;</span><span class="s1">#map {position:absolute;top:0;bottom:0;right:0;left:0;}</span><span class="s0">&lt;/style&gt;</span>
+    <span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+    <span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+    <span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+    <span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot; </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css&quot;</span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot; </span><span class="s2">href</span><span class="s3">=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css&quot;</span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot; </span><span class="s2">href</span><span class="s3">=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css&quot;</span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot; </span><span class="s2">href</span><span class="s3">=&quot;https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css&quot;</span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot; </span><span class="s2">href</span><span class="s3">=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;</span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot; </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;</span><span class="s0">/&gt;</span>
+    
+            <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, 
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;style&gt;</span>
+                <span class="s1">#map_e6a323bc6184870d4cbf4fca4a579073 {</span>
+                    <span class="s1">position: relative;</span>
+                    <span class="s1">width: 100.0%;</span>
+                    <span class="s1">height: 100.0%;</span>
+                    <span class="s1">left: 0.0%;</span>
+                    <span class="s1">top: 0.0%;</span>
+                <span class="s1">}</span>
+            <span class="s0">&lt;/style&gt;</span>
+        
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;    </span>
+    
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;folium-map&quot; </span><span class="s2">id</span><span class="s3">=&quot;map_e6a323bc6184870d4cbf4fca4a579073&quot; </span><span class="s0">&gt;&lt;/div&gt;</span>
+        
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;script&gt;    </span>
+    
+            <span class="s1">var map_e6a323bc6184870d4cbf4fca4a579073 = L.map(</span>
+                <span class="s1">&quot;map_e6a323bc6184870d4cbf4fca4a579073&quot;,</span>
+                <span class="s1">{</span>
+                    <span class="s1">center: [28.5011226, 77.4099794],</span>
+                    <span class="s1">crs: L.CRS.EPSG3857,</span>
+                    <span class="s1">zoom: 12,</span>
+                    <span class="s1">zoomControl: true,</span>
+                    <span class="s1">preferCanvas: false,</span>
+                <span class="s1">}</span>
+            <span class="s1">);</span>
+
+            
+
+        
+    
+            <span class="s1">var tile_layer_02b5e4570ca4a76a7e9161b9b8a25628 = L.tileLayer(</span>
+                <span class="s1">&quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,</span>
+                <span class="s1">{&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}</span>
+            <span class="s1">).addTo(map_e6a323bc6184870d4cbf4fca4a579073);</span>
+        
+    
+            <span class="s1">var marker_60b8fd2e824c53bce7dd73c1b47f9478 = L.marker(</span>
+                <span class="s1">[28.704059, 77.10249],</span>
+                <span class="s1">{}</span>
+            <span class="s1">).addTo(map_e6a323bc6184870d4cbf4fca4a579073);</span>
+        
+    
+        <span class="s1">var popup_4cfb9fa66a6c7b1a1f1e0ea5d1746525 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});</span>
+
+        
+            <span class="s1">var html_65328ae45246ce9043227d365b9ad456 = $(`&lt;div id=&quot;html_65328ae45246ce9043227d365b9ad456&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Delhi&lt;/div&gt;`)[0];</span>
+            <span class="s1">popup_4cfb9fa66a6c7b1a1f1e0ea5d1746525.setContent(html_65328ae45246ce9043227d365b9ad456);</span>
+        
+
+        <span class="s1">marker_60b8fd2e824c53bce7dd73c1b47f9478.bindPopup(popup_4cfb9fa66a6c7b1a1f1e0ea5d1746525)</span>
+        <span class="s1">;</span>
+
+        
+    
+    
+            <span class="s1">var marker_24d67f6bf355737f7e584cbeede7ed56 = L.marker(</span>
+                <span class="s1">[28.5011226, 77.4099794],</span>
+                <span class="s1">{}</span>
+            <span class="s1">).addTo(map_e6a323bc6184870d4cbf4fca4a579073);</span>
+        
+    
+        <span class="s1">var popup_a8390eb152153341770e19fb075f1f47 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});</span>
+
+        
+            <span class="s1">var html_acb90f3439efb824815177f86ad17ab7 = $(`&lt;div id=&quot;html_acb90f3439efb824815177f86ad17ab7&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;GeeksforGeeks&lt;/div&gt;`)[0];</span>
+            <span class="s1">popup_a8390eb152153341770e19fb075f1f47.setContent(html_acb90f3439efb824815177f86ad17ab7);</span>
+        
+
+        <span class="s1">marker_24d67f6bf355737f7e584cbeede7ed56.bindPopup(popup_a8390eb152153341770e19fb075f1f47)</span>
+        <span class="s1">;</span>
+
+        
+    
+    
+            <span class="s1">var poly_line_ad7a5aab0979314cf3c156dd69ba8bdb = L.polyline(</span>
+                <span class="s1">[[28.704059, 77.10249], [28.5011226, 77.4099794]],</span>
+                <span class="s1">{&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}</span>
+            <span class="s1">).addTo(map_e6a323bc6184870d4cbf4fca4a579073);</span>
+        
+<span class="s0">&lt;/script&gt;</span></pre>
+</body>
+</html>

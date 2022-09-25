@@ -1,0 +1,183 @@
+<html>
+<head>
+<title>main.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">tkinter </span><span class="s0">import </span><span class="s1">*</span>
+<span class="s0">from </span><span class="s1">PIL </span><span class="s0">import </span><span class="s1">ImageTk</span><span class="s0">, </span><span class="s1">Image</span>
+<span class="s0">import </span><span class="s1">csv</span>
+<span class="s0">import </span><span class="s1">gmplot</span>
+<span class="s0">import </span><span class="s1">gmaps</span>
+<span class="s0">import </span><span class="s1">gmaps.datasets</span>
+<span class="s1">gmaps.configure(api_key=</span><span class="s2">'FTCC Testing.csv'</span><span class="s1">)</span>
+<span class="s1">earthquake_df=gmaps.datasets.load_dataset_as_df(</span><span class="s2">'earthquakes'</span><span class="s1">)</span>
+<span class="s1">earthquake_df.head()</span>
+<span class="s1">locations=earthquake_df[[</span><span class="s2">'latitude'</span><span class="s0">,</span><span class="s2">'longitude'</span><span class="s1">]]</span>
+<span class="s1">weights=earthquake_df[</span><span class="s2">'Images File Name'</span><span class="s1">]</span>
+<span class="s1">fig=gmaps.figure()</span>
+<span class="s1">fig.add_layer(gmaps.heatmap_layer(locations</span><span class="s0">,</span><span class="s1">weights=weights))</span>
+<span class="s1">fig</span>
+<span class="s1">fig=gmaps.figure()</span>
+<span class="s1">fig</span>
+<span class="s1">locations=[(</span><span class="s3">51.5</span><span class="s0">,</span><span class="s3">0.1</span><span class="s1">)</span><span class="s0">,</span><span class="s1">(</span><span class="s3">51.7</span><span class="s0">,</span><span class="s3">0.2</span><span class="s1">)]</span>
+<span class="s1">heatmap_layer=gmaps.heatmap_layer(locations)</span>
+<span class="s1">fig.add_layer(heatmap_layer)</span>
+<span class="s1">fig</span>
+<span class="s1">new_york_coordinates = (</span><span class="s3">40.75</span><span class="s0">, </span><span class="s1">-</span><span class="s3">74.00</span><span class="s1">)</span>
+<span class="s1">gmaps.figure(center=new_york_coordinates</span><span class="s0">, </span><span class="s1">zoom_level=</span><span class="s3">12</span><span class="s0">, </span><span class="s1">map_type=</span><span class="s2">'HYBRID'</span><span class="s1">)</span>
+
+
+
+<span class="s1">file_name=</span><span class="s2">&quot;FTCC Testing.csv&quot;</span>
+<span class="s1">fields = []</span>
+<span class="s1">rows = []</span>
+<span class="s0">with </span><span class="s1">open(file_name</span><span class="s0">, </span><span class="s2">'r'</span><span class="s1">) </span><span class="s0">as </span><span class="s1">csvfile:</span>
+	<span class="s1">csvreader = csv.reader(csvfile)</span>
+
+	<span class="s4"># extracting field names through first row</span>
+	<span class="s1">fields = next(csvreader)</span>
+	<span class="s0">for </span><span class="s1">row </span><span class="s0">in </span><span class="s1">csvreader:</span>
+		<span class="s1">rows.append(row)</span>
+		<span class="s1">print(</span><span class="s2">&quot;Total no. of rows: %d&quot; </span><span class="s1">% (csvreader.line_num))</span>
+		<span class="s1">print(</span><span class="s2">'Field names are:' </span><span class="s1">+ </span><span class="s2">', '</span><span class="s1">.join(field </span><span class="s0">for </span><span class="s1">field </span><span class="s0">in </span><span class="s1">fields))</span>
+
+		<span class="s4"># printing first 5 rows</span>
+		<span class="s1">print(</span><span class="s2">'</span><span class="s0">\n</span><span class="s2">First 5 rows are:</span><span class="s0">\n</span><span class="s2">'</span><span class="s1">)</span>
+		<span class="s0">for </span><span class="s1">row </span><span class="s0">in </span><span class="s1">rows[:</span><span class="s3">5</span><span class="s1">]:</span>
+			<span class="s4"># parsing each column of a row</span>
+			<span class="s0">for </span><span class="s1">col </span><span class="s0">in </span><span class="s1">row:</span>
+				<span class="s1">print(</span><span class="s2">&quot;%10s&quot; </span><span class="s1">% col</span><span class="s0">, </span><span class="s1">end=</span><span class="s2">&quot; &quot;</span><span class="s1">)</span><span class="s0">,</span>
+			<span class="s1">print(</span><span class="s2">'</span><span class="s0">\n</span><span class="s2">'</span><span class="s1">)</span>
+<span class="s4"># importing the tkinter module and PIL</span>
+<span class="s4"># that is pillow module</span>
+
+
+
+<span class="s0">def </span><span class="s1">forward(img_no):</span>
+
+	<span class="s4"># GLobal variable so that we can have</span>
+	<span class="s4"># access and change the variable</span>
+	<span class="s4"># whenever needed</span>
+	<span class="s0">global </span><span class="s1">label</span>
+	<span class="s0">global </span><span class="s1">button_forward</span>
+	<span class="s0">global </span><span class="s1">button_back</span>
+	<span class="s0">global </span><span class="s1">button_exit</span>
+	<span class="s1">label.grid_forget()</span>
+
+	<span class="s4"># This is for clearing the screen so that</span>
+	<span class="s4"># our next image can pop up</span>
+	<span class="s1">label = Label(image=List_images[img_no-</span><span class="s3">1</span><span class="s1">])</span>
+
+	<span class="s4"># as the list starts from 0 so we are</span>
+	<span class="s4"># subtracting one</span>
+	<span class="s1">label.grid(row=</span><span class="s3">1</span><span class="s0">, </span><span class="s1">column=</span><span class="s3">0</span><span class="s0">, </span><span class="s1">columnspan=</span><span class="s3">3</span><span class="s1">)</span>
+	<span class="s1">button_forward = Button(root</span><span class="s0">, </span><span class="s1">text=</span><span class="s2">&quot;forward&quot;</span><span class="s0">,</span>
+						<span class="s1">command=</span><span class="s0">lambda</span><span class="s1">: forward(img_no+</span><span class="s3">1</span><span class="s1">))</span>
+
+	<span class="s4"># img_no+1 as we want the next image to pop up</span>
+	<span class="s0">if </span><span class="s1">img_no == </span><span class="s3">4</span><span class="s1">:</span>
+		<span class="s1">button_forward = Button(root</span><span class="s0">, </span><span class="s1">text=</span><span class="s2">&quot;Forward&quot;</span><span class="s0">,</span>
+								<span class="s1">state=DISABLED)</span>
+
+	<span class="s4"># img_no-1 as we want previous image when we click</span>
+	<span class="s4"># back button</span>
+	<span class="s1">button_back = Button(root</span><span class="s0">, </span><span class="s1">text=</span><span class="s2">&quot;Back&quot;</span><span class="s0">,</span>
+						<span class="s1">command=</span><span class="s0">lambda</span><span class="s1">: back(img_no-</span><span class="s3">1</span><span class="s1">))</span>
+
+	<span class="s4"># Placing the button in new grid</span>
+	<span class="s1">button_back.grid(row=</span><span class="s3">5</span><span class="s0">, </span><span class="s1">column=</span><span class="s3">0</span><span class="s1">)</span>
+	<span class="s1">button_exit.grid(row=</span><span class="s3">5</span><span class="s0">, </span><span class="s1">column=</span><span class="s3">1</span><span class="s1">)</span>
+	<span class="s1">button_forward.grid(row=</span><span class="s3">5</span><span class="s0">, </span><span class="s1">column=</span><span class="s3">2</span><span class="s1">)</span>
+
+
+<span class="s0">def </span><span class="s1">back(img_no):</span>
+
+	<span class="s4"># We will have global variable to access these</span>
+	<span class="s4"># variable and change whenever needed</span>
+	<span class="s0">global </span><span class="s1">label</span>
+	<span class="s0">global </span><span class="s1">button_forward</span>
+	<span class="s0">global </span><span class="s1">button_back</span>
+	<span class="s0">global </span><span class="s1">button_exit</span>
+	<span class="s1">label.grid_forget()</span>
+
+	<span class="s4"># for clearing the image for new image to pop up</span>
+	<span class="s1">label = Label(image=List_images[img_no - </span><span class="s3">1</span><span class="s1">])</span>
+	<span class="s1">label.grid(row=</span><span class="s3">1</span><span class="s0">, </span><span class="s1">column=</span><span class="s3">0</span><span class="s0">, </span><span class="s1">columnspan=</span><span class="s3">3</span><span class="s1">)</span>
+	<span class="s1">button_forward = Button(root</span><span class="s0">, </span><span class="s1">text=</span><span class="s2">&quot;forward&quot;</span><span class="s0">,</span>
+							<span class="s1">command=</span><span class="s0">lambda</span><span class="s1">: forward(img_no + </span><span class="s3">1</span><span class="s1">))</span>
+	<span class="s1">button_back = Button(root</span><span class="s0">, </span><span class="s1">text=</span><span class="s2">&quot;Back&quot;</span><span class="s0">,</span>
+						<span class="s1">command=</span><span class="s0">lambda</span><span class="s1">: back(img_no - </span><span class="s3">1</span><span class="s1">))</span>
+	<span class="s1">print(img_no)</span>
+
+	<span class="s4"># whenever the first image will be there we will</span>
+	<span class="s4"># have the back button disabled</span>
+	<span class="s0">if </span><span class="s1">img_no == </span><span class="s3">1</span><span class="s1">:</span>
+		<span class="s1">button_back = Button(root</span><span class="s0">, </span><span class="s1">Text=</span><span class="s2">&quot;Back&quot;</span><span class="s0">, </span><span class="s1">state=DISABLED)</span>
+
+	<span class="s1">label.grid(row=</span><span class="s3">1</span><span class="s0">, </span><span class="s1">column=</span><span class="s3">0</span><span class="s0">, </span><span class="s1">columnspan=</span><span class="s3">3</span><span class="s1">)</span>
+	<span class="s1">button_back.grid(row=</span><span class="s3">5</span><span class="s0">, </span><span class="s1">column=</span><span class="s3">0</span><span class="s1">)</span>
+	<span class="s1">button_exit.grid(row=</span><span class="s3">5</span><span class="s0">, </span><span class="s1">column=</span><span class="s3">1</span><span class="s1">)</span>
+	<span class="s1">button_forward.grid(row=</span><span class="s3">5</span><span class="s0">, </span><span class="s1">column=</span><span class="s3">2</span><span class="s1">)</span>
+
+
+<span class="s4"># Calling the Tk (The initial constructor of tkinter)</span>
+<span class="s1">root = Tk()</span>
+
+<span class="s4"># We will make the title of our app as Image Viewer</span>
+<span class="s1">root.title(</span><span class="s2">&quot;Image Viewer&quot;</span><span class="s1">)</span>
+
+<span class="s4"># The geometry of the box which will be displayed</span>
+<span class="s4"># on the screen</span>
+<span class="s1">root.geometry(</span><span class="s2">&quot;400x300&quot;</span><span class="s1">)</span>
+
+<span class="s4"># Adding the images using the pillow module which</span>
+<span class="s4"># has a class ImageTk We can directly add the</span>
+<span class="s4"># photos in the tkinter folder or we have to</span>
+<span class="s4"># give a proper path for the images</span>
+<span class="s1">image_no_1 = ImageTk.PhotoImage(Image.open(</span><span class="s2">&quot;DJI_125.JPG&quot;</span><span class="s1">))</span>
+<span class="s1">image_no_2 = ImageTk.PhotoImage(Image.open(</span><span class="s2">&quot;DJI_126.JPG&quot;</span><span class="s1">))</span>
+<span class="s1">image_no_3 = ImageTk.PhotoImage(Image.open(</span><span class="s2">&quot;DJI_127.JPG&quot;</span><span class="s1">))</span>
+<span class="s1">image_no_4 = ImageTk.PhotoImage(Image.open(</span><span class="s2">&quot;DJI_128.JPG&quot;</span><span class="s1">))</span>
+<span class="s1">image_no_5 = ImageTk.PhotoImage(Image.open(</span><span class="s2">&quot;DJI_129.JPG&quot;</span><span class="s1">))</span>
+
+<span class="s4"># List of the images so that we traverse the list</span>
+<span class="s1">List_images = [image_no_1</span><span class="s0">, </span><span class="s1">image_no_2</span><span class="s0">, </span><span class="s1">image_no_3</span><span class="s0">, </span><span class="s1">image_no_4</span><span class="s0">,</span><span class="s1">image_no_5]</span>
+<span class="s1">label = Label(image=image_no_1)</span>
+
+<span class="s4"># We have to show the box so this below line is needed</span>
+<span class="s1">label.grid(row=</span><span class="s3">1</span><span class="s0">, </span><span class="s1">column=</span><span class="s3">0</span><span class="s0">, </span><span class="s1">columnspan=</span><span class="s3">3</span><span class="s1">)</span>
+
+<span class="s4"># We will have three button back ,forward and exit</span>
+<span class="s1">button_back = Button(root</span><span class="s0">, </span><span class="s1">text=</span><span class="s2">&quot;Back&quot;</span><span class="s0">, </span><span class="s1">command=back</span><span class="s0">,</span>
+					<span class="s1">state=DISABLED)</span>
+
+<span class="s4"># root.quit for closing the app</span>
+<span class="s1">button_exit = Button(root</span><span class="s0">, </span><span class="s1">text=</span><span class="s2">&quot;Exit&quot;</span><span class="s0">,</span>
+					<span class="s1">command=root.quit)</span>
+
+<span class="s1">button_forward = Button(root</span><span class="s0">, </span><span class="s1">text=</span><span class="s2">&quot;Forward&quot;</span><span class="s0">,</span>
+						<span class="s1">command=</span><span class="s0">lambda</span><span class="s1">: forward(</span><span class="s3">1</span><span class="s1">))</span>
+
+<span class="s4"># grid function is for placing the buttons in the frame</span>
+<span class="s1">button_back.grid(row=</span><span class="s3">5</span><span class="s0">, </span><span class="s1">column=</span><span class="s3">0</span><span class="s1">)</span>
+<span class="s1">button_exit.grid(row=</span><span class="s3">5</span><span class="s0">, </span><span class="s1">column=</span><span class="s3">1</span><span class="s1">)</span>
+<span class="s1">button_forward.grid(row=</span><span class="s3">5</span><span class="s0">, </span><span class="s1">column=</span><span class="s3">2</span><span class="s1">)</span>
+
+<span class="s1">root.mainloop()</span>
+
+</pre>
+</body>
+</html>
